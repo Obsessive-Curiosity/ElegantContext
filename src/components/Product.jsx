@@ -1,0 +1,21 @@
+import useCart from "../hooks/useCart.js";
+
+export default function Product({ id, image, title, price, description }) {
+  const { handleAddItemToCart: onAddToCart } = useCart();
+
+  return (
+    <article className="product">
+      <img src={image} alt={title} />
+      <div className="product-content">
+        <div>
+          <h3>{title}</h3>
+          <p className="product-price">${price}</p>
+          <p>{description}</p>
+        </div>
+        <p className="product-actions">
+          <button onClick={() => onAddToCart(id)}>Add to Cart</button>
+        </p>
+      </div>
+    </article>
+  );
+}
